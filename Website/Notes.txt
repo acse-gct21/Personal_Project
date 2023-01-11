@@ -1,0 +1,3 @@
+HTML - Structure
+CSS - Style and How it Looks
+JavaScript - activity and functionality

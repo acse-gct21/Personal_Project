@@ -1,0 +1,28 @@
+# Now we will try to find the start and end of an integer in a sorted list
+
+# One way is to just start and search through the list
+
+# This will look like
+
+def Linear_Search(arr, target):
+	if target > arr[-1] or target < arr[0]:
+		return [-1,1]
+	start = -1
+	end = 0
+	h = False
+	for num in arr:
+		if num == target:
+			end = start
+			end += 1
+			h = True
+		else:
+			if h == False:
+				start += 1
+			else:
+				return [start,end]
+	if start == len(arr) and end == 0:
+		return [-1,1]
+	return [start,end]
+
+print(Linear_Search([0,1,1,1,2,2,2,3,4,5,5,6],7))
+print(Linear_Search([0,1,1,1,2,2,2,3,4,5,5,6],4))

@@ -1,0 +1,51 @@
+
+# Test to see if two words are the same anagram in Python
+
+def check_anagram(s1, s2):
+	#check the length of the sentences
+	if len(s1) != len(s2):
+		return False
+	#To go through each letter and each character, it would be too expensive
+	# Best solution is to create a hash table
+	# Create a dictions
+	freq1 = {}
+	freq2 = {}
+	
+	for ch in s1:
+		if ch in freq1:
+			freq1[ch] += 1
+		else:
+			freq1[ch] = 1
+	for ch in s2:
+		if ch in freq2:
+			freq2[ch] += 1
+		else:
+			freq2[ch] = 1
+	print(freq1, freq2)
+	for key in freq1:
+		if key not in freq2 or freq1[key] != freq2[key]:
+			return False
+	return True 
+
+print(check_anagram("school", "loodsd"))
+print(check_anagram("saal","laas"))
+
+# In python there is a call called counter and collection that passes the string as an augment
+
+from collections import Counter
+
+def are_anagrams(s1, s2):
+	if len(s1) != len(s2):
+		return False
+	return Counter(s1) == Counter(s2)
+
+# In the worst case, they have the same length. (O(n) + O(n) + O(n)). 
+
+#Two anagrams have the same lexicographically sorted string
+
+def are_anagram2(s1, s2):
+	if len(s1) != len(s2):
+		return False
+	return Sorted(s1) == Sorted(s2)
+
+#This would be T(n) = O(nlogn) and S(n) = O(n)

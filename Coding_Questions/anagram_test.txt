@@ -1,0 +1,46 @@
+# My first attempt at checking anagrams without help
+
+# First I create a function to check two sentences
+
+def ch_anagram(s1, s2):
+	# First boundary condition = sentences not the same cannot be anagram
+	if len(s1) != len(s2):
+		return False
+	
+	# Best way is to create a hash table and compare the keys and values
+	freq1 = {}
+	freq2 = {}
+	
+	# Count the duplicates in s1 and s2
+	for ch in s1:
+		if ch == freq1:
+			freq1[ch] += 1
+		else:
+			freq1[ch] = 1
+	for ch in s2:
+		if ch == freq2:
+			freq2[ch] +=1
+		else:
+			freq2[ch] = 1
+	
+	# Check if the the ch is in fr1 and fr2 or they don't have the same freq
+	for key in freq1:
+		if key not in freq2 or freq1[key] != freq2[key]:
+			return False
+	return True
+
+# The Time complexity is O(n) and the Space complexity is S(n)
+
+#There is a pythonic way of doing it:
+
+def py_ana(s1, s2):
+	if len(s1) == len(s2):
+		return False
+	return Counter(s1) == Counter(s2)
+
+def py_ana_2(s1, s2):
+	if len(s1) == len(s2):
+		return False
+	return sorted(s1) == sorted(s2)
+
+# This time complexity is not as good as it uses O(nlogn)

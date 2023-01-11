@@ -1,0 +1,48 @@
+# This will run anagram.txt
+
+# To test if two words are an anagram they must be the same both forward and backward
+
+# The best way to see this is to create a hash list to see the freq of each letter and if the occurance of the letter happens
+
+def ana_test(sc1, sc2):
+	if len(sc1) != len(sc2):
+		return False
+	freq1 = {}
+	freq2 = {}
+	for ch in sc1:
+		if ch in freq1:
+			freq1[ch] +=1
+		else:
+			freq1[ch] = 1
+	for ch in sc2:
+		if ch in freq2:
+			freq2[ch] += 1
+		else:
+			freq2[ch] = 1
+	for key in freq1:
+		print(key, freq2, freq2[key])
+		if key not in freq2 or freq1[key] != freq2[key]:
+			return False
+	return True
+
+print(ana_test("ara", "ara"))
+
+# The time complextiy is O(n) because of the two for operations
+
+# The space complexity is also O(n) because it traverserses through one hash table
+
+# Can also be cone pythonly
+
+from collections import Counter
+
+def pyth_ana(sc1, sc2):
+	if len(sc1) != len(sc2):
+		return False
+	return Counter(sc1) == Counter(sc2)
+
+# If you sort it it will be the exact same:
+
+def sort_ana(sc1, sc2):
+	if len(sc1) != len(sc2):
+		return False
+	return Sorted(sc1) == Sorted(sc2)
