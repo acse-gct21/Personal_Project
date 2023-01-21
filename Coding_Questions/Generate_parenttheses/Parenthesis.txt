@@ -1,0 +1,57 @@
+# given an integer n, generate all the valid combinations of n pairs of parentheses
+
+# n = 3
+# "((()))". "(()())", "(())()", "()(())". "()()()"
+
+# a combinnation that contains 1 type of parenteses is valid if
+# every opening par has its closing par
+# it doesn't have a closing ar without aving an unused opening par before it
+
+def is_valid(combination):
+	stack = []
+	for par in combination:
+		if par == "(":
+			stack.append(par)
+	else:
+		if len(stack) == 0:
+# validity condiiont 1: not trying to pop from an empty stack
+# ( otherwise it means that we found a closing par witout an opening one from it)
+			return False
+		else:
+			stack.pop()
+	return diff == 0 
+# validity condition 2: stack must be empty at the end 
+# otherwise it means that we have oepning par that we didnt use
+
+# Where is the backtracking in the story
+
+# n determins the number of pairs. when diff becomes negative, we stop
+
+def generate(n):
+	def rec(n, diff, comb, combs):
+		if diff < 0 or diff > n:
+			return
+		elif n == 0 :
+			if diff == 0:
+				combs.append(''.join(comb))
+		else:
+			comb.append('(')
+			rec(n-1, diff + 1, comb, combs)
+			comb.pop()
+			comb.append(')')
+			rec(n-1, diff - 1, comb, combs)
+			comb.pop()
+	combs = []
+	rec(2*n, 0, [], combs)
+	return combs
+
+#T(n) = 2T(n-1) + 1
+#T(n) = 2(2T(n-2)+1)+1
+#T(n) = 8T(n-3) + 7
+# T (n) = n**nT(0) + 2**n - 1
+# T(n) = O(n*2**n) - substitution method
+# learn the 
+# S(n) = n+1 + n * 2**n
+# S(n) = O(n*2**n)
+
+print(generate(5))

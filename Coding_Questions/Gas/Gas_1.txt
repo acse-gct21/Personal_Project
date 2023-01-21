@@ -1,0 +1,73 @@
+# Example of problem
+
+# Given a cirsular list of gast station, where we can go from a sataion i to
+# the station i + 1, and the last one goes back to the first one, find the index
+# of the station from where we start to bea ble to traverse all the station
+# and  go back to the inital one without running out of gas
+
+
+gas = [1,5,3,3,5,3,1,4,5]
+cost = [5,2,2,8,2,4,2,5,1,2]
+#output: 8
+#explanation:
+
+# Note that:
+# Only move forward
+# gas tank start empty
+# gas[i] repre the amount of fas at the station i
+# cost[i] rep the cost to go from the station i to the next one
+# the asnwer is guaranteed to be unique
+# if the station we're searching for doesn't exist return 01
+
+# gas[i]  >= 0
+# cost[i] >= 0
+# |gas| = |cost|
+
+
+def can_traverse(gas, cost, start):
+	n = len(gas)
+	# goal is to see if we can finish the cycle from the start
+	remaining = 0
+	i = start
+	started = False
+	while i != start or not started:
+		started = True
+		remaining += gas[i] - cost[i]
+		if remaining < 0:
+			return False
+		i = (i+1)%n
+		# Handles the last station with module
+	return True
+
+def gas_station(gas, cost):
+	for i in range(len(gas)):
+		if can_traverse(gas, cost, i):
+			return i
+	return -1
+# Beacuse the answer is unique, the worst case scenario is 
+# T(n) = n+(n-1) etc etc
+# O(n**2)
+# S(n) = O(1)
+
+# if the station start reaches a negative amound at the index i, then all station between
+# start and i inclusive are invalid, we start again from i + 1
+
+def gas_station_2(gas, cost):
+	remaining = 0
+	candidate = 0
+	prev_remaining = 0
+	for i in range(len(gas)):
+		remaining += gas[i] - cost[i]
+	if remaining < 0:
+		candidate = i + 1
+		prev_remaining += remaining
+		remaining = 0
+	if candidate == len(gas) or remaining + prev_remaining < 0:
+		return -1
+	else:
+		return candidate
+
+# T(n) = O(n) 0 better than O(n**2)
+# S(n) = 4 = O(1)
+
+print(gas_station_2(gas,cost))

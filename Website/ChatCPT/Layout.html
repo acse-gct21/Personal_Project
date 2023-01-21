@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Four Videos at the Top of the Screen</title>
+    <style>
+        /* Add a modern font */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Add a modern color scheme */
+        body {
+            background-color: #f1f1f1;
+        }
+        /* Add a modern button style */
+        button, input[type='submit'] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        /* Add a hover effect to buttons */
+        button:hover, input[type='submit']:hover {
+            opacity: 0.8;
+        }
+        /* Add a modern look to the navigation menu */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        nav li {
+            float: left;
+        }
+        nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav li a:hover {
+            background-color: #111;
+        }
+        /* Remove the space between the videos */
+        .video-container {
+          display: flex; /* Set the display property to flex */
+          padding: 0; /* Remove the padding of the container */
+          margin: 0; /* Remove the margin of the container */
+        }
+        .video-container video {
+          margin: 0; /* Remove the margin from the videos */
+          padding: 0; /* Remove the padding from the videos */
+          flex: 1; /* Each video should take equal amount of space */
+        }
+        /* Add style for gif container */
+        .gif-container {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="home">
+        <h1>Welcome to My Website</h1>
+        <p>This is the home page of my website.</p>
+        <div class="gif-container">
+          <img src="anim.gif" alt="heap animation" width="250" height="240">
+        </div>
+      </section>
+        <div class="video-container">
+          <video width="250" height="240" controls>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video width="250" height="240" controls>
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video width="250" height="240" controls>
+            <source src="video3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video width="250" height="240" controls>
+            <source src="video4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+      <section id="about">
+        <h2>About Us</h2>
+        <p>Learn more about our company and what we do.</p>
+      </section>
+      <section id="services">
+        <h2>Our Services</h2>
+        <ul>
+          <li>Service 1</li>
+          <li>Service 2</li>
+          <li>Service 3</li>
+        </ul>
+      </section>
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Get in touch with us by filling out the form below.</p>
+        <form action="...">
+          <!-- form inputs -->
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

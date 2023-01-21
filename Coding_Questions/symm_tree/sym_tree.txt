@@ -1,0 +1,38 @@
+# Check if the tree is symmetric
+
+# solution is usually done recursively
+
+def tree_sum(root):
+	if roon is None:
+		return 0
+	else:
+		left = tree_sum(root.left)
+		right = tree_sum(root.right)
+		return root.val + left + right
+
+# 1 both trees are empty, symteric = true. 
+# 2 One tree exists and the other doest
+# 3 both tree exist but the roots dont have the same valuie
+# 4 both tree exists and they have the same root value - not sure if symmetric but sub-trees can be different
+
+def are_symmetric(root1, root2):
+# Both dont exit
+	if root1 is None and root2 is None:
+		return True
+	elif ((root1 is None) != (root2 is None)) or root1.val != root2.val:
+		return False
+# Both trees exist and have the same root values
+	else:
+		return are_symmetric(root1.left, root2.right)
+			and are_symmetric(root1.right, root2.left)
+def is_symmetric(root):
+# Check if input tree exits
+	if root is None:
+		return True
+# Check each tree - stop when the are_symmetric returns False or True or this one returns False
+	return are_symmetric(root.left, root.right)
+T(n) = O(n)
+S(n) = O(logn) - recursive on a binary tree is O(logn)
+
+
+

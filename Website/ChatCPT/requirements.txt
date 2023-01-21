@@ -1,0 +1,7 @@
+math
+os
+matplotlib
+matplotlib.pyplot
+matplotlib.animation
+networkx
+Heap_Class

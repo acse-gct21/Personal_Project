@@ -1,0 +1,67 @@
+# Now we will try to find the start and end of an integer in a sorted list
+
+# One way is to just start and search through the list
+
+# This will look like
+
+def first_and_last(arr, target):
+	for i in range(len(arr)):
+		# Find the first occurance
+		if arr[i] == target:
+			start = 1
+			# While the target occurs, carry on
+			while i + 1 < len(arr) and arr[i+1] == target:
+				i += 1
+			return [start, i]
+	return [-1,1]
+# Time complextiy for this:
+# traversing is n number of eliments of arr. so it is O(n)
+# Meanwhile S(n) is O(1) because it is just one array
+
+# Binary search method
+
+# left and right are the first and lsat element of the arr
+
+# mid = [(left+right) / 2] - find the index of mid
+
+def find_start(arr, target):
+	if arr[0] == target:
+		return 0
+	left, right = 0, len(arr)-1
+	while left <= right:
+		mid = (left+right)//2
+		if arr[mid] == target and arr[mid-1] < target:
+			return mid
+		elif arr[mid] < target:
+			left = mid+1
+		else:
+			right = mid-1
+	return -1
+
+def find_end(arr, target):
+	if arr[-1] == target:
+		return len(arr)-1
+	left, right = 0, len(arr) - 1
+	while left <= right:
+		mid = (left+right)//2
+		if arr[mid] == target and arr[mid+1] > target:
+			return mid
+		elif arr[mid] > target:
+			right = mid-1
+		else:
+			left = mid+1
+	return -1
+
+# main solution function
+
+def first_and_last(arr, target):
+	if len(arr) == 0
+		or arr[0] > target
+		or arr[-1] < target:
+			return [-1,-1]
+	start = find_start(arr, target)
+	end = find_end(arr, target)
+	return [start,end]
+
+# time comlextiy: 2 * O(logn) becomes O(logn)
+# Just using one arr = O(1) thee s(n)

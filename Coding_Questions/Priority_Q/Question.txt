@@ -1,0 +1,39 @@
+# kth largest element
+
+# array of integers, and interger k , find the kth largest elemt
+
+def sort_through_list(arr, k):
+	for i in range(k-1):
+		arr.remove(max(arr))
+	return max(arr)
+
+# removing costs n, max(arr) = n, k-1 as well and n final - within for loop is multiple
+# (k-1) * 2n + n = O(kn)
+
+
+# Another way is to just sort the array and collect the 4th element
+
+def kth_leager(arr, k):
+	n = len(arr)
+	arr.sort()
+	return arr[n-k]
+
+# T(n,k) = O(nlogn) = O(nlogn)
+
+# Using the priority queue - watch Heap video - already done
+
+import heapq
+
+def kth_largest(arr,k):
+	arr = [-elem for elem in arr]
+	heapq.heapify(arr)
+	for i in range(k-1):
+		heapq.heappop(arr)
+	return -heapq.heapop(arr)
+
+# 2n + k-1 * logn + logn
+# Tn,k = 2n + klogn = O(n+klogn)
+
+# When k is close to n
+# when k is close to 0, = O(n)
+# space = O(n)
